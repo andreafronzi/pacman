@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import controller.api.Controller;
 import controller.impl.ControllerImpl;
@@ -13,8 +15,10 @@ import view.api.GameView;
 
 public class GameViewImpl implements GameView {
 
+    private final static int PROPORTION = 5;
+
     private final Controller controller = new ControllerImpl();
-    private final JFrame view = new JFrame();
+    private final JFrame view = new JFrame("pacman");
 
     public GameViewImpl () {
         final JPanel mainPanel = new JPanel();
@@ -42,8 +46,20 @@ public class GameViewImpl implements GameView {
         this.view.setContentPane(mainPanel);
         this.view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+    private void setScreenSize() {
+        final Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize();
+        final int height = (int) screenDimension.getHeight();
+        final int width = (int) screenDimension.getWidth();
+        this.view.setSize(width/PROPORTION, height/PROPORTION);
+    }
+
+
+
+
     @Override
     public void open() {
+        setScreenSize();
         this.view.setVisible(true);
     }
 
