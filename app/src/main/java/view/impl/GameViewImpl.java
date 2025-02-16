@@ -5,7 +5,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -53,9 +52,6 @@ public class GameViewImpl implements GameView {
         final int width = (int) screenDimension.getWidth();
         this.view.setSize(width/PROPORTION, height/PROPORTION);
     }
-
-
-
 
     @Override
     public void open() {
